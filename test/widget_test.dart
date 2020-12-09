@@ -27,4 +27,9 @@ void main() {
 //     expect(find.text('0'), findsNothing);
 //     expect(find.text('1'), findsOneWidget);
 //   });
+  testWidgets("description", (WidgetTester tester) async{
+    await tester.pumpWidget(MyApp());
+
+    expect(find.byWidget(MyStatefulWidget()), findsNothing);
+  });
 }
