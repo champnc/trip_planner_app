@@ -1,4 +1,3 @@
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,19 +8,74 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final  word = WordPair.random();
     return MaterialApp(
       title: 'Welcome to Flutter',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Welcome to Flutter'),
-          backgroundColor: Colors.red,
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Text(word.asPascalCase),
-        ),
+      home: MyStatefulWidget(),
+    );
+  }
+}
+
+class MyStatefulWidget extends StatefulWidget {
+  MyStatefulWidget({Key key}) : super(key: key);
+
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Suggest',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Story',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: list',
+      style: optionStyle,
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(' Trip Planner'),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.auto_stories),
+            label: 'stories',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_box_outlined),
+            label: 'About',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
 }
+
