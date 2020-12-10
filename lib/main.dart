@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,21 +25,10 @@ class MyStatefulWidget extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Index 0: Suggest',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 1: Story',
-      style: optionStyle,
-    ),
-    Text(
-      'Index 2: list',
-      style: optionStyle,
-    ),
+  static List<Widget> _widgetOptions = <Widget>[
+    _PageHome(),
+    _PageStories(),
+    _PageAbout(),
   ];
 
   void _onItemTapped(int index) {
@@ -75,6 +65,33 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
+    );
+  }
+}
+
+class _PageHome extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'Index 0: Suggest'
+    );
+  }
+}
+
+class _PageStories extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+        'Index 1: Stories'
+    );
+  }
+}
+
+class _PageAbout extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+        'Index 2: About'
     );
   }
 }
