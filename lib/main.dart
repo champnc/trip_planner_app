@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,8 +71,36 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 class _PageHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'Index 0: Suggest'
+    return Scaffold(
+      body: Container(
+        margin: EdgeInsets.symmetric(vertical: 20.0),
+        height: 200.0,
+        child: ListView(
+          scrollDirection: Axis.horizontal,
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.red,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.blue,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.green,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.yellow,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              color: Colors.orange,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
