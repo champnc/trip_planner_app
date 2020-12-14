@@ -101,6 +101,11 @@ class _PageHome extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.indigo,
+        onPressed: () => {},
+        child: Icon(Icons.add_sharp),
+      ),
     );
   }
 }
